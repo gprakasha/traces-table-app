@@ -1,14 +1,14 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable, getSortedRowModel, type SortingState, type ExpandedState } from '@tanstack/react-table';
 import { LogTraceSchema, type ValidatedLogTraceType } from '../../schema/schema';
-import type { LogSpanType, LogTraceType, TracesType } from '../../type/traces';
+import { TraceStatus, type LogSpanType, type LogTraceType, type TracesType } from '../../type/traces';
 import { z } from 'zod';
-import { formatReadableDate, formatSubString, safeJsonParse } from '../../utils/util';
-import { ObjectRender } from '../ObjectRender';
+import { formatReadableDate } from '../../utils/util';
 import { SpanList } from '../SpanList';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import './style.css';
 import VisualizeTrace from '../visualizeTrace/VisualizeTrace';
+import { renderCell } from '../../utils/renderHelpers';
 
 const columnHelper = createColumnHelper<ValidatedLogTraceType & {
     cost: number;
@@ -24,7 +24,7 @@ const columnHelper = createColumnHelper<ValidatedLogTraceType & {
 const TraceTable = ({ traces }: {
     traces: TracesType
 }) => {
-    const SubStringLength: number = 50;
+
     const tableContainerRef = useRef<HTMLDivElement>(null);
 
     const validatedTraces = useMemo(() => {
@@ -52,7 +52,7 @@ const TraceTable = ({ traces }: {
             const spanCount = spans.length;
             const firstSpanInput = spans[0]?.content?.input || '';
             const lastSpanOutput = spans[spans.length - 1]?.content?.output || '';
-            const nonSuccessSpansCount = spans.filter((span) => span.status !== 'success').length;
+            const nonSuccessSpansCount = spans.filter((span) => span.status !== TraceStatus.SUCCESS).length;
 
             return {
                 ...trace,
@@ -71,19 +71,6 @@ const TraceTable = ({ traces }: {
     const [sorting, setSorting] = useState<SortingState>([{ id: 'startedAt', desc: true }]);
     const [expanded, setExpanded] = useState<ExpandedState>({});
     const [selectedTrace, setSelectedTrace] = useState<ValidatedLogTraceType | null>(null);
-
-    const renderCell = (value: any, type: 'json' | 'text' | 'date') => {
-        if (!value) return 'N/A';
-        switch (type) {
-            case 'json':
-                const parsed = safeJsonParse(value);
-                return parsed ? <ObjectRender data={parsed} /> : <span>{formatSubString(value, SubStringLength)}</span>;
-            case 'date':
-                return new Date(value).toLocaleString();
-            default:
-                return formatSubString(String(value), SubStringLength);
-        }
-    };
 
     const columns = useMemo(() => [
         columnHelper.display({

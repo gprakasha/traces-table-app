@@ -1,6 +1,7 @@
 import { z } from 'zod';
+import { TraceStatus } from '../type/traces';
 
-const statusEnum = z.enum(['success', 'failure', 'pending', 'unknown']);
+const statusEnum = z.enum(Object.values(TraceStatus));
 
 const flexibleValue = z.union([
     z.string().max(1000),

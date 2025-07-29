@@ -9,6 +9,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import './style.css';
 import VisualizeTrace from '../visualizeTrace/VisualizeTrace';
 import { renderCell } from '../../utils/renderHelpers';
+import { Tag } from '../Tag';
 
 const columnHelper = createColumnHelper<ValidatedLogTraceType & {
     cost: number;
@@ -109,9 +110,7 @@ const TraceTable = ({ traces }: {
             cell: (info) => info.getValue()?.length ? (
                 <div className="flex flex-wrap gap-1">
                     {info.getValue()?.map((tag: string) => (
-                        <span key={tag} className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">
-                            {tag}
-                        </span>
+                        <Tag key={tag} text={tag} />
                     ))}
                 </div>
             ) : (
@@ -248,8 +247,8 @@ const TraceTable = ({ traces }: {
             if (row.getIsExpanded()) {
                 const spanCount = row.original.spans?.length || 0;
                 const baseHeight = 85;
-                const perSpanHeight = 55;
-                return baseHeight + (spanCount * perSpanHeight) + 20;
+                const perSpanHeight = 30;
+                return baseHeight + (spanCount * perSpanHeight);
             }
             return 85;
         },

@@ -1,0 +1,825 @@
+@import "tw-animate-css";
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("/fonts/Akkurat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("/fonts/Akkurat-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("/fonts/Akkurat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("/fonts/Akkurat-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("/fonts/FragmentMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("/fonts/FragmentMono-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+
+  --breakpoint-*: initial;
+  --container-*: initial;
+  --tracking-*: initial;
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+
+  --radius: 4px;
+  --spacing: 4px;
+  --spacing-4xl: 64px;
+  --spacing-3xl: 48px;
+  --spacing-2xl: 32px;
+  --spacing-xl: 24px;
+  --spacing-lg: 20px;
+  --spacing-md: 16px;
+  --spacing-sm: 12px;
+  --spacing-xs: 8px;
+  --spacing-2xs: 4px;
+  --spacing-3xs: 2px;
+  --spacing-4xs: 1px;
+  --color-transparent: rgba(0, 0, 0, 0);
+
+  --font-sans: "Akkurat", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Fragment Mono", "SFMono-Regular", "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "Source Code Pro", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --text-lg: 43px;
+  --text-lg--line-height: 42px;
+  --text-lg--tracking: -0.03em;
+
+  --text-md: 23px;
+  --text-md--line-height: 28px;
+  --text-md--tracking: 0;
+
+  --text-base: 15px;
+  --text-base--line-height: 21px;
+  --text-base--tracking: 0;
+
+  --text-sm: 13px;
+  --text-sm--line-height: 17px;
+  --text-sm--tracking: 0;
+
+  --text-xs: 11px;
+  --text-xs--line-height: 13px;
+  --text-xs--tracking: 0.01em;
+
+  --text-mono-base: 14px;
+  --text-mono-base--line-height: 18px;
+  --text-mono-base--tracking: 0;
+
+  --text-mono-sm: 12px;
+  --text-mono-sm--line-height: 17px;
+  --text-mono-sm--tracking: 0;
+
+  --color-surface-highest: rgba(253, 254, 251, 1);
+  --color-surface-highest-transparent: rgba(253, 254, 251, 0);
+  --color-on-surface-highest: rgba(43, 57, 10, 1);
+  --color-on-surface-highest-subtle: rgba(43, 57, 10, 0.7);
+  --color-on-surface-highest-disabled: rgba(43, 57, 10, 0.4);
+
+  --color-surface-high: rgba(250, 251, 247, 1);
+  --color-surface-high-transparent: rgba(250, 251, 247, 0);
+  --color-on-surface-high: rgba(47, 63, 27, 1);
+  --color-on-surface-high-subtle: rgba(47, 63, 27, 0.7);
+  --color-on-surface-high-disabled: rgba(47, 63, 27, 0.4);
+
+  --color-surface-base: rgba(248, 249, 245, 1);
+  --color-surface-base-transparent: rgba(248, 249, 245, 0);
+  --color-on-surface-base: rgba(46, 67, 32, 1);
+  --color-on-surface-base-subtle: rgba(46, 67, 32, 0.7);
+  --color-on-surface-base-disabled: rgba(46, 67, 32, 0.4);
+
+  --color-surface-low: rgba(241, 243, 239, 1);
+  --color-surface-low-transparent: rgba(241, 243, 239, 0);
+  --color-on-surface-low: rgba(36, 59, 27, 1);
+  --color-on-surface-low-subtle: rgba(36, 59, 27, 0.7);
+  --color-on-surface-low-disabled: rgba(36, 59, 27, 0.4);
+
+  --color-surface-lowest: rgba(233, 237, 233, 1);
+  --color-surface-lowest-transparent: rgba(233, 237, 233, 0);
+  --color-on-surface-lowest: rgba(18, 59, 14, 1);
+  --color-on-surface-lowest-subtle: rgba(18, 59, 14, 0.7);
+  --color-on-surface-lowest-disabled: rgba(18, 59, 14, 0.4);
+
+  --color-surface-inverse: rgba(42, 51, 42, 1);
+  --color-surface-inverse-transparent: rgba(42, 51, 42, 0);
+  --color-on-surface-inverse: rgba(253, 254, 251, 1);
+  --color-on-surface-inverse-subtle: rgba(253, 254, 251, 0.7);
+  --color-on-surface-inverse-disabled: rgba(253, 254, 251, 0.4);
+
+  --color-surface-tint-mild: rgba(52, 79, 49, 0.03);
+  --color-surface-tint-base: rgba(52, 79, 49, 0.07);
+  --color-surface-tint-strong: rgba(51, 80, 48, 0.14);
+
+  --color-outline: rgba(225, 230, 223, 1);
+  --color-outline-strong: rgba(196, 203, 194, 1);
+
+  --color-primary: rgba(74, 109, 71, 1);
+  --color-on-primary: rgba(238, 246, 220, 1);
+  --color-primary-outline: rgba(84, 143, 40, 1);
+  --color-primary-container: rgba(221, 234, 189, 1);
+  --color-on-primary-container: rgba(74, 109, 71, 1);
+
+  --color-secondary: 61, 215, 215;
+  --color-on-secondary: rgba(239, 246, 242, 1);
+  --color-secondary-outline: 16, 239, 246;
+  --color-secondary-container: 21, 62, 76;
+  --color-on-secondary-container: rgba(35, 75, 67, 1);
+
+  --color-tertiary: rgba(177, 78, 170, 1);
+  --color-on-tertiary: rgba(254, 235, 251, 1);
+  --color-tertiary-outline: rgba(216, 87, 207, 1);
+  --color-tertiary-container: rgba(254, 235, 251, 1);
+  --color-on-tertiary-container: rgba(177, 78, 170, 1);
+
+  --color-error: rgba(153, 30, 75, 1);
+  --color-on-error: rgba(252, 240, 243, 1);
+  --color-error-outline: rgba(212, 22, 101, 1);
+  --color-error-container: rgba(251, 216, 229, 1);
+  --color-on-error-container: rgba(146, 23, 74, 1);
+
+  --color-accent-1: rgba(207, 33, 132, 1);
+  --color-accent-1-outline: rgba(235, 171, 207, 1);
+  --color-accent-1-container: rgba(254, 235, 241, 1);
+
+  --color-accent-2: rgba(194, 57, 52, 1);
+  --color-accent-2-outline: rgba(233, 195, 193, 1);
+  --color-accent-2-container: rgba(254, 235, 235, 1);
+
+  --color-accent-3: rgba(181, 76, 31, 1);
+  --color-accent-3-outline: rgba(241, 200, 182, 1);
+  --color-accent-3-container: rgba(255, 240, 229, 1);
+
+  --color-accent-4: rgba(136, 106, 0, 1);
+  --color-accent-4-outline: rgba(235, 213, 135, 1);
+  --color-accent-4-container: rgba(249, 242, 217, 1);
+
+  --color-accent-5: rgba(74, 109, 71, 1);
+  --color-accent-5-outline: rgba(190, 208, 189, 1);
+  --color-accent-5-container: rgba(240, 245, 223, 1);
+
+  --color-accent-6: rgba(45, 120, 77, 1);
+  --color-accent-6-outline: rgba(185, 211, 196, 1);
+  --color-accent-6-container: rgba(228, 247, 234, 1);
+
+  --color-accent-7: rgba(26, 116, 116, 1);
+  --color-accent-7-outline: rgba(190, 215, 215, 1);
+  --color-accent-7-container: rgba(232, 245, 245, 1);
+
+  --color-accent-8: rgba(57, 99, 183, 1);
+  --color-accent-8-outline: rgba(194, 216, 236, 1);
+  --color-accent-8-container: rgba(227, 246, 255, 1);
+
+  --color-accent-9: rgba(126, 66, 166, 1);
+  --color-accent-9-outline: rgba(219, 203, 230, 1);
+  --color-accent-9-container: rgba(240, 237, 255, 1);
+
+  --color-accent-10: rgba(156, 47, 166, 1);
+  --color-accent-10-outline: rgba(239, 215, 241, 1);
+  --color-accent-10-container: rgba(255, 235, 255, 1);
+}
+
+.dark {
+  --color-surface-highest: rgba(36, 42, 46, 1);
+  --color-surface-highest-transparent: rgba(36, 42, 46, 0);
+  --color-on-surface-highest: rgba(216, 227, 221, 1);
+  --color-on-surface-highest-subtle: rgba(216, 227, 221, 0.7);
+  --color-on-surface-highest-disabled: rgba(216, 227, 221, 0.4);
+
+  --color-surface-high: rgba(32, 38, 42, 1);
+  --color-surface-high-transparent: rgba(32, 38, 42, 0);
+  --color-on-surface-high: rgba(204, 217, 211, 1);
+  --color-on-surface-high-subtle: rgba(204, 217, 211, 0.7);
+  --color-on-surface-high-disabled: rgba(204, 217, 211, 0.4);
+
+  --color-surface-base: rgba(29, 34, 38, 1);
+  --color-surface-base-transparent: rgba(29, 34, 38, 0);
+  --color-on-surface-base: rgba(216, 227, 221, 1);
+  --color-on-surface-base-subtle: rgba(216, 227, 221, 0.7);
+  --color-on-surface-base-disabled: rgba(216, 227, 221, 0.4);
+
+  --color-surface-low: rgba(23, 27, 28, 1);
+  --color-surface-low-transparent: rgba(23, 27, 28, 0);
+  --color-on-surface-low: rgba(178, 195, 191, 1);
+  --color-on-surface-low-subtle: rgba(178, 195, 191, 0.7);
+  --color-on-surface-low-disabled: rgba(178, 195, 191, 0.4);
+
+  --color-surface-lowest: rgba(19, 21, 21, 1);
+  --color-surface-lowest-transparent: rgba(19, 21, 21, 0);
+  --color-on-surface-lowest: rgba(166, 185, 181, 1);
+  --color-on-surface-lowest-subtle: rgba(166, 185, 181, 0.7);
+  --color-on-surface-lowest-disabled: rgba(166, 185, 181, 0.4);
+
+  --color-surface-inverse: rgba(48, 62, 69, 1);
+  --color-surface-inverse-transparent: rgba(48, 62, 69, 0);
+  --color-on-surface-inverse: rgba(203, 218, 214, 1);
+  --color-on-surface-inverse-subtle: rgba(203, 218, 214, 0.7);
+  --color-on-surface-inverse-disabled: rgba(203, 218, 214, 0.4);
+
+  --color-surface-tint-mild: rgba(147, 175, 207, 0.05);
+  --color-surface-tint-base: rgba(147, 175, 207, 0.1);
+  --color-surface-tint-strong: rgba(147, 175, 207, 0.16);
+
+  --color-outline: rgba(44, 52, 59, 1);
+  --color-outline-strong: rgba(59, 69, 79, 1);
+
+  --color-primary: rgba(94, 236, 151, 1);
+  --color-on-primary: rgba(18, 70, 39, 1);
+  --color-primary-outline: rgba(74, 245, 143, 1);
+  --color-primary-container: rgba(28, 69, 52, 1);
+  --color-on-primary-container: rgba(78, 239, 143, 1);
+
+  --color-secondary: 61, 215, 215;
+  --color-on-secondary: rgba(22, 40, 46, 1);
+  --color-secondary-outline: 16, 239, 246;
+  --color-secondary-container: 21, 62, 76;
+  --color-on-secondary-container: rgba(61, 215, 215, 1);
+
+  --color-tertiary: rgba(243, 119, 220, 1);
+  --color-on-tertiary: rgba(44, 23, 48, 1);
+  --color-tertiary-outline: rgba(255, 106, 227, 1);
+  --color-tertiary-container: rgba(57, 28, 62, 1);
+  --color-on-tertiary-container: rgba(243, 119, 220, 1);
+
+  --color-error: rgba(251, 126, 155, 1);
+  --color-on-error: rgba(62, 1, 8, 1);
+  --color-error-outline: rgba(203, 41, 74, 1);
+  --color-error-container: rgba(89, 48, 58, 1);
+  --color-on-error-container: rgba(255, 177, 195, 1);
+
+  --color-accent-1: rgba(255, 115, 159, 1);
+  --color-accent-1-outline: rgba(95, 45, 61, 1);
+  --color-accent-1-container: rgba(70, 31, 52, 1);
+
+  --color-accent-2: rgba(255, 129, 122, 1);
+  --color-accent-2-outline: rgba(102, 43, 56, 1);
+  --color-accent-2-container: rgba(76, 30, 40, 1);
+
+  --color-accent-3: rgba(250, 146, 72, 1);
+  --color-accent-3-outline: rgba(90, 66, 36, 1);
+  --color-accent-3-container: rgba(57, 42, 24, 1);
+
+  --color-accent-4: rgba(216, 179, 31, 1);
+  --color-accent-4-outline: rgba(83, 75, 36, 1);
+  --color-accent-4-container: rgba(51, 46, 23, 1);
+
+  --color-accent-5: rgba(161, 194, 42, 1);
+  --color-accent-5-outline: rgba(62, 84, 54, 1);
+  --color-accent-5-container: rgba(39, 50, 35, 1);
+
+  --color-accent-6: rgba(87, 217, 139, 1);
+  --color-accent-6-outline: rgba(41, 80, 63, 1);
+  --color-accent-6-container: rgba(28, 54, 43, 1);
+
+  --color-accent-7: rgba(61, 215, 215, 1);
+  --color-accent-7-outline: rgba(46, 84, 97, 1);
+  --color-accent-7-container: rgba(28, 51, 59, 1);
+
+  --color-accent-8: rgba(91, 179, 255, 1);
+  --color-accent-8-outline: rgba(51, 64, 118, 1);
+  --color-accent-8-container: rgba(37, 44, 71, 1);
+
+  --color-accent-9: rgba(195, 130, 255, 1);
+  --color-accent-9-outline: rgba(69, 58, 117, 1);
+  --color-accent-9-container: rgba(45, 40, 69, 1);
+
+  --color-accent-10: rgba(243, 119, 220, 1);
+  --color-accent-10-outline: rgba(94, 42, 103, 1);
+  --color-accent-10-container: rgba(61, 33, 66, 1);
+}
+
+@layer utilities {
+  .bg-surface-highest {
+    background-color: rgba(var(--color-surface-highest) / 1);
+    color: rgba(var(--color-on-surface-highest) / 1);
+  }
+  .bg-surface-highest .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-highest-subtle) / 1);
+  }
+  .bg-surface-highest :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-highest-disabled) / 1);
+  }
+
+  .bg-surface-high {
+    background-color: rgba(var(--color-surface-high) / 1);
+    color: rgba(var(--color-on-surface-high) / 1);
+  }
+  .bg-surface-high .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-high-subtle) / 1);
+  }
+  .bg-surface-high :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-high-disabled) / 1);
+  }
+
+  .bg-surface-base {
+    background-color: rgba(var(--color-surface-base) / 1);
+    color: rgba(var(--color-on-surface-base) / 1);
+  }
+  .bg-surface-base .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-base-subtle) / 1);
+  }
+  .bg-surface-base :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-base-disabled) / 1);
+  }
+
+  .bg-surface-low {
+    background-color: rgba(var(--color-surface-low) / 1);
+    color: rgba(var(--color-on-surface-low) / 1);
+  }
+  .bg-surface-low .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-low-subtle) / 1);
+  }
+  .bg-surface-low :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-low-disabled) / 1);
+  }
+
+  .bg-surface-lowest {
+    background-color: rgba(var(--color-surface-lowest) / 1);
+    color: rgba(var(--color-on-surface-lowest) / 1);
+  }
+  .bg-surface-lowest .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-lowest-subtle) / 1);
+  }
+  .bg-surface-lowest :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-lowest-disabled) / 1);
+  }
+
+  .bg-surface-inverse {
+    background-color: rgba(var(--color-surface-inverse) / 1);
+    color: rgba(var(--color-on-surface-inverse) / 1);
+  }
+  .bg-surface-inverse .subtle:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-inverse-subtle) / 1);
+  }
+  .bg-surface-inverse :disabled:not([class*="bg-"]) {
+    color: rgba(var(--color-on-surface-inverse-disabled) / 1);
+  }
+
+  .bg-primary {
+    background-color: rgba(var(--color-primary) / 1);
+    color: rgba(var(--color-on-primary) / 1);
+    border-color: rgba(var(--color-primary-outline) / 1);
+  }
+  .bg-primary:focus-visible,
+  .bg-primary :focus-visible,
+  .bg-primary button:focus-visible,
+  .bg-primary input[type="button"]:focus-visible,
+  .bg-primary input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-primary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-primary-outline) / 0.5);
+  }
+  .bg-primary:disabled,
+  .bg-primary[disabled],
+  .bg-primary[data-disabled="true"],
+  .bg-primary[aria-disabled="true"],
+  .bg-primary :disabled,
+  .bg-primary button:disabled:not([class*="bg-"]),
+  .bg-primary input[type="button"]:disabled,
+  .bg-primary input[type="submit"]:disabled,
+  .bg-primary [disabled],
+  .bg-primary [data-disabled="true"],
+  .bg-primary [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-primary-container {
+    background-color: rgba(var(--color-primary-container) / 1);
+    color: rgba(var(--color-on-primary-container) / 1);
+    border-color: rgba(var(--color-primary-outline) / 1);
+  }
+  .bg-primary-container:focus-visible,
+  .bg-primary-container :focus-visible,
+  .bg-primary-container button:focus-visible,
+  .bg-primary-container input[type="button"]:focus-visible,
+  .bg-primary-container input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-primary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-primary-outline) / 0.5);
+  }
+  .bg-primary-container:disabled,
+  .bg-primary-container[disabled],
+  .bg-primary-container[data-disabled="true"],
+  .bg-primary-container[aria-disabled="true"],
+  .bg-primary-container :disabled,
+  .bg-primary-container button:disabled:not([class*="bg-"]),
+  .bg-primary-container input[type="button"]:disabled,
+  .bg-primary-container input[type="submit"]:disabled,
+  .bg-primary-container [disabled],
+  .bg-primary-container [data-disabled="true"],
+  .bg-primary-container [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-secondary {
+    background-color: rgba(var(--color-secondary) / 1);
+    color: rgba(var(--color-on-secondary) / 1);
+    border-color: rgba(var(--color-secondary-outline) / 1);
+  }
+  .bg-secondary:focus-visible,
+  .bg-secondary :focus-visible,
+  .bg-secondary button:focus-visible,
+  .bg-secondary input[type="button"]:focus-visible,
+  .bg-secondary input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-secondary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-secondary-outline) / 0.5);
+  }
+  .bg-secondary:disabled,
+  .bg-secondary[disabled],
+  .bg-secondary[data-disabled="true"],
+  .bg-secondary[aria-disabled="true"],
+  .bg-secondary :disabled,
+  .bg-secondary button:disabled:not([class*="bg-"]),
+  .bg-secondary input[type="button"]:disabled,
+  .bg-secondary input[type="submit"]:disabled,
+  .bg-secondary [disabled],
+  .bg-secondary [data-disabled="true"],
+  .bg-secondary [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-secondary-container {
+    background-color: rgba(var(--color-secondary-container) / 1);
+    color: rgba(var(--color-on-secondary-container) / 1);
+    border-color: rgba(var(--color-secondary-outline) / 1);
+  }
+  .bg-secondary-container:focus-visible,
+  .bg-secondary-container :focus-visible,
+  .bg-secondary-container button:focus-visible,
+  .bg-secondary-container input[type="button"]:focus-visible,
+  .bg-secondary-container input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-secondary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-secondary-outline) / 0.5);
+  }
+  .bg-secondary-container:disabled,
+  .bg-secondary-container[disabled],
+  .bg-secondary-container[data-disabled="true"],
+  .bg-secondary-container[aria-disabled="true"],
+  .bg-secondary-container :disabled,
+  .bg-secondary-container button:disabled:not([class*="bg-"]),
+  .bg-secondary-container input[type="button"]:disabled,
+  .bg-secondary-container input[type="submit"]:disabled,
+  .bg-secondary-container [disabled],
+  .bg-secondary-container [data-disabled="true"],
+  .bg-secondary-container [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-tertiary {
+    background-color: rgba(var(--color-tertiary) / 1);
+    color: rgba(var(--color-on-tertiary) / 1);
+    border-color: rgba(var(--color-tertiary-outline) / 1);
+  }
+  .bg-tertiary:focus-visible,
+  .bg-tertiary :focus-visible,
+  .bg-tertiary button:focus-visible,
+  .bg-tertiary input[type="button"]:focus-visible,
+  .bg-tertiary input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-tertiary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-tertiary-outline) / 0.5);
+  }
+  .bg-tertiary:disabled,
+  .bg-tertiary[disabled],
+  .bg-tertiary[data-disabled="true"],
+  .bg-tertiary[aria-disabled="true"],
+  .bg-tertiary :disabled,
+  .bg-tertiary button:disabled:not([class*="bg-"]),
+  .bg-tertiary input[type="button"]:disabled,
+  .bg-tertiary input[type="submit"]:disabled,
+  .bg-tertiary [disabled],
+  .bg-tertiary [data-disabled="true"],
+  .bg-tertiary [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-tertiary-container {
+    background-color: rgba(var(--color-tertiary-container) / 1);
+    color: rgba(var(--color-on-tertiary-container) / 1);
+    border-color: rgba(var(--color-tertiary-outline) / 1);
+  }
+  .bg-tertiary-container:focus-visible,
+  .bg-tertiary-container :focus-visible,
+  .bg-tertiary-container button:focus-visible,
+  .bg-tertiary-container input[type="button"]:focus-visible,
+  .bg-tertiary-container input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-tertiary-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-tertiary-outline) / 0.5);
+  }
+  .bg-tertiary-container:disabled,
+  .bg-tertiary-container[disabled],
+  .bg-tertiary-container[data-disabled="true"],
+  .bg-tertiary-container[aria-disabled="true"],
+  .bg-tertiary-container :disabled,
+  .bg-tertiary-container button:disabled:not([class*="bg-"]),
+  .bg-tertiary-container input[type="button"]:disabled,
+  .bg-tertiary-container input[type="submit"]:disabled,
+  .bg-tertiary-container [disabled],
+  .bg-tertiary-container [data-disabled="true"],
+  .bg-tertiary-container [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-error {
+    background-color: rgba(var(--color-error) / 1);
+    color: rgba(var(--color-on-error) / 1);
+    border-color: rgba(var(--color-error-outline) / 1);
+  }
+  .bg-error:focus-visible,
+  .bg-error :focus-visible,
+  .bg-error button:focus-visible,
+  .bg-error input[type="button"]:focus-visible,
+  .bg-error input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-error-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-error-outline) / 0.5);
+  }
+  .bg-error:disabled,
+  .bg-error[disabled],
+  .bg-error[data-disabled="true"],
+  .bg-error[aria-disabled="true"],
+  .bg-error :disabled,
+  .bg-error button:disabled:not([class*="bg-"]),
+  .bg-error input[type="button"]:disabled,
+  .bg-error input[type="submit"]:disabled,
+  .bg-error [disabled],
+  .bg-error [data-disabled="true"],
+  .bg-error [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-error-container {
+    background-color: rgba(var(--color-error-container) / 1);
+    color: rgba(var(--color-on-error-container) / 1);
+    border-color: rgba(var(--color-error-outline) / 1);
+  }
+  .bg-error-container:focus-visible,
+  .bg-error-container :focus-visible,
+  .bg-error-container button:focus-visible,
+  .bg-error-container input[type="button"]:focus-visible,
+  .bg-error-container input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-error-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-error-outline) / 0.5);
+  }
+  .bg-error-container:disabled,
+  .bg-error-container[disabled],
+  .bg-error-container[data-disabled="true"],
+  .bg-error-container[aria-disabled="true"],
+  .bg-error-container :disabled,
+  .bg-error-container button:disabled:not([class*="bg-"]),
+  .bg-error-container input[type="button"]:disabled,
+  .bg-error-container input[type="submit"]:disabled,
+  .bg-error-container [disabled],
+  .bg-error-container [data-disabled="true"],
+  .bg-error-container [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-success {
+    background-color: rgba(var(--color-success) / 1);
+    color: rgba(var(--color-on-success) / 1);
+    border-color: rgba(var(--color-success-outline) / 1);
+  }
+  .bg-success:focus-visible,
+  .bg-success :focus-visible,
+  .bg-success button:focus-visible,
+  .bg-success input[type="button"]:focus-visible,
+  .bg-success input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-success-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-success-outline) / 0.5);
+  }
+  .bg-success:disabled,
+  .bg-success[disabled],
+  .bg-success[data-disabled="true"],
+  .bg-success[aria-disabled="true"],
+  .bg-success :disabled,
+  .bg-success button:disabled:not([class*="bg-"]),
+  .bg-success input[type="button"]:disabled,
+  .bg-success input[type="submit"]:disabled,
+  .bg-success [disabled],
+  .bg-success [data-disabled="true"],
+  .bg-success [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .bg-warning {
+    background-color: rgba(var(--color-warning) / 1);
+    color: rgba(var(--color-on-warning) / 1);
+    border-color: rgba(var(--color-warning-outline) / 1);
+  }
+  .bg-warning:focus-visible,
+  .bg-warning :focus-visible,
+  .bg-warning button:focus-visible,
+  .bg-warning input[type="button"]:focus-visible,
+  .bg-warning input[type="submit"]:focus-visible {
+    border-color: rgba(var(--color-warning-outline) / 0.5);
+    outline: 2px solid rgba(var(--color-warning-outline) / 0.5);
+  }
+  .bg-warning:disabled,
+  .bg-warning[disabled],
+  .bg-warning[data-disabled="true"],
+  .bg-warning[aria-disabled="true"],
+  .bg-warning :disabled,
+  .bg-warning button:disabled:not([class*="bg-"]),
+  .bg-warning input[type="button"]:disabled,
+  .bg-warning input[type="submit"]:disabled,
+  .bg-warning [disabled],
+  .bg-warning [data-disabled="true"],
+  .bg-warning [aria-disabled="true"] {
+    opacity: 0.4;
+  }
+
+  .text-lg {
+    letter-spacing: var(--text-lg--tracking);
+  }
+
+  .text-md {
+    letter-spacing: var(--text-md--tracking);
+  }
+
+  .text-base {
+    letter-spacing: var(--text-base--tracking);
+  }
+  .text-base .font-mono {
+    font-size: var(--text-mono-base);
+    line-height: var(--text-mono-base--line-height);
+    letter-spacing: var(--text-mono-base--tracking);
+  }
+
+  .text-sm {
+    letter-spacing: var(--text-sm--tracking);
+  }
+  .text-sm .font-mono {
+    font-size: var(--text-mono-sm);
+    line-height: var(--text-mono-sm--line-height);
+    letter-spacing: var(--text-mono-sm--tracking);
+  }
+
+  .text-xs {
+    letter-spacing: var(--text-xs--tracking);
+  }
+
+  .muted {
+    opacity: 0.7;
+  }
+
+  .disabled {
+    opacity: 0.4;
+  }
+
+  .no-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    outline: 0;
+    outline-color: transparent;
+    border-color: rgba(var(--color-outline) / 1);
+    ring-color: rgba(var(--color-outline) / 1);
+  }
+
+  :focus-visible,
+  button:focus-visible {
+    border-color: rgba(var(--color-outline) / 1);
+    ring-color: rgba(var(--color-outline) / 1);
+  }
+
+  textarea:focus-visible,
+  input:focus-visible,
+  [role="tab"]:focus-visible,
+  [role="slider"]:focus-visible,
+  [role="switch"]:focus-visible,
+  [role="radio"]:focus-visible {
+    border-color: rgba(var(--color-primary-outline) / 0.5);
+    ring-color: rgba(var(--color-primary-outline) / 0.5);
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  option:focus-visible,
+  label:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible,
+  [role="tab"]:focus-visible,
+  [role="slider"]:focus-visible,
+  [contenteditable="true"]:focus-visible,
+  [tabindex]:focus-visible,
+  summary:focus-visible,
+  details:focus-visible,
+  iframe:focus-visible,
+  dialog:focus-visible,
+  fieldset:focus-visible,
+  legend:focus-visible,
+  meter:focus-visible,
+  progress:focus-visible,
+  [data-focus-visible="true"],
+  [data-focus-visible="true"]:focus-visible {
+    ring-width: 2px;
+  }
+
+  [invalid],
+  [data-invalid="true"],
+  [aria-invalid="true"] {
+    ring-color: rgba(var(--color-error-outline) / 1);
+    border-color: rgba(var(--color-error-outline) / 1);
+  }
+
+  [invalid]:focus-visible,
+  [data-invalid="true"]:focus-visible,
+  [aria-invalid="true"]:focus-visible {
+    ring-color: rgba(var(--color-error-outline) / 0.5);
+    border-color: rgba(var(--color-error-outline) / 0.5);
+  }
+
+  :disabled,
+  [disabled],
+  [data-disabled="true"],
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  button:active:not(:disabled):not([disabled]):not([data-disabled="true"]):not([aria-disabled="true"]),
+  [role="button"]:active:not(:has(button:active)):not(:disabled):not([disabled]):not([data-disabled="true"]):not([aria-disabled="true"]),
+  input[type="button"]:active:not(:disabled):not([disabled]):not([data-disabled="true"]):not([aria-disabled="true"]),
+  input[type="submit"]:active:not(:disabled):not([disabled]):not([data-disabled="true"]):not([aria-disabled="true"]) {
+    transform: scale(0.98);
+  }
+
+  svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    transition: all;
+  }
+
+  ::selection {
+    background-color: rgba(var(--color-primary-container) / 1);
+    color: rgba(var(--color-primary) / 1);
+  }
+
+  html,
+  body,
+  #root,
+  :root {
+    height: 100%;
+    font-feature-settings: "calt" 1, "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    background-color: rgba(var(--color-surface-low) / 1);
+    color: rgba(var(--color-on-surface-low) / 1);
+  }
+}

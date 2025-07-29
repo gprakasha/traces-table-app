@@ -1,4 +1,4 @@
-import { ObjectRender } from './ObjectRender';
+import ObjectRender from './ObjectRender';
 import { formatSubString, safeJsonParse } from '../utils/util';
 
 const RenderCell = ({
@@ -9,7 +9,7 @@ const RenderCell = ({
     type: 'json' | 'date' | 'string';
 }) => {
     if (!value) return 'N/A';
-    
+
     switch (type) {
         case 'json':
             const parsed = safeJsonParse(value as string);

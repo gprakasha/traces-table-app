@@ -1,4 +1,4 @@
-export const ObjectRender = ({ data }: { data: object }) => {
+const ObjectRender = ({ data }: { data: object }) => {
     return (
         <div>
             {Object.entries(data).map(([key, value]) => (
@@ -9,3 +9,5 @@ export const ObjectRender = ({ data }: { data: object }) => {
         </div>
     );
 };
+
+export default ObjectRender;

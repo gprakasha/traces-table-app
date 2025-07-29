@@ -1,5 +1,6 @@
-export const SubStringLength = 50;
-export const formatSubString = (value: string, length: number = SubStringLength): string => {
+const DEFAULT_SUB_STRING_LENGTH = 50;
+
+export const formatSubString = (value: string, length: number = DEFAULT_SUB_STRING_LENGTH): string => {
     return value.length > length ? value.substring(0, length) + '...' : value;
 };
 
